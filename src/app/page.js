@@ -149,12 +149,12 @@ const Gallery = ({ isDarkMode }) => (
         <img src="/image2.jpeg" alt="Garage Service 2" className="rounded-lg shadow-lg w-full h-64 object-cover" />
         <img src="/image3.jpeg" alt="Garage Service 3" className="rounded-lg shadow-lg w-full h-64 object-cover" />
       </div>
-      <div className="mt-8">
+      {/* <div className="mt-8">
         <video controls className="h-72 w-full rounded-lg shadow-lg">
           <source src="/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-      </div>
+      </div> */}
     </div>
   </section>
 );
