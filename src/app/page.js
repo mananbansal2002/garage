@@ -1,12 +1,43 @@
 "use client";
 import React, { useState } from "react";
 
-const Header = ({ isDarkMode, toggleDarkMode }) => (
-  <header className={`sticky top-0 z-50 ${isDarkMode ? "bg-gray-900" : "bg-white"} shadow-md`}>
-    <nav className="container mx-auto px-6 py-4">
-      <div className="flex justify-between items-center">
-        <h1 className={`text-2xl font-bold ${isDarkMode ? "text-[#DAD4B5]" : "text-[#800000]"}`}>Montu Garage</h1>
-        <div className="flex items-center space-x-6">
+const Header = ({ isDarkMode, toggleDarkMode }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Function to toggle the mobile menu
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
+  return (
+    <header className={`sticky top-0 z-50 ${isDarkMode ? "bg-gray-900" : "bg-white"} shadow-md`}>
+      <nav className="container mx-auto px-6 py-4">
+        <div className="flex justify-between items-center">
+          <h1 className={`text-2xl font-bold ${isDarkMode ? "text-[#DAD4B5]" : "text-[#800000]"}`}>Montu Garage</h1>
+          <div className="hidden md:flex items-center space-x-6">
+            <a href="#services" className={`hover:text-[#982B1C] ${isDarkMode ? "text-[#DAD4B5]" : "text-gray-700"}`}>
+              Services
+            </a>
+            <a href="#about" className={`hover:text-[#982B1C] ${isDarkMode ? "text-[#DAD4B5]" : "text-gray-700"}`}>
+              About
+            </a>
+            <a href="#gallery" className={`hover:text-[#982B1C] ${isDarkMode ? "text-[#DAD4B5]" : "text-gray-700"}`}>
+              Gallery
+            </a>
+            <a href="#contact" className={`hover:text-[#982B1C] ${isDarkMode ? "text-[#DAD4B5]" : "text-gray-700"}`}>
+              Contact
+            </a>
+            <button onClick={toggleDarkMode} className="p-2 rounded-full bg-[#F2E8C6] dark:bg-gray-800">
+              {isDarkMode ? "🌞" : "🌙"}
+            </button>
+          </div>
+          {/* Mobile menu button */}
+          <button className="md:hidden p-2" onClick={toggleMenu}>
+            ☰
+          </button>
+        </div>
+        {/* Mobile Menu */}
+        <div className={`flex flex-col items-center space-y-4 mt-4 md:hidden ${menuOpen ? "block" : "hidden"}`}>
           <a href="#services" className={`hover:text-[#982B1C] ${isDarkMode ? "text-[#DAD4B5]" : "text-gray-700"}`}>
             Services
           </a>
@@ -23,10 +54,10 @@ const Header = ({ isDarkMode, toggleDarkMode }) => (
             {isDarkMode ? "🌞" : "🌙"}
           </button>
         </div>
-      </div>
-    </nav>
-  </header>
-);
+      </nav>
+    </header>
+  );
+};
 
 const Hero = ({ isDarkMode }) => (
   <section className={`py-20 ${isDarkMode ? "bg-gray-800" : "bg-[#F2E8C6]"}`}>
@@ -174,5 +205,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
